@@ -1,1 +1,105 @@
+/* style.css - Chess For All
+   Clean, responsive layout and styling for the UI and board sidebar.
+*/
 
+:root{
+  --bg: #0f1724;
+  --panel: #0b1220;
+  --accent: #1fb6ff;
+  --muted: #9aa4b2;
+  --card: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.05));
+  --glass: rgba(255,255,255,0.03);
+  --radius: 12px;
+}
+
+*{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+html,body{height:100%;margin:0;background:linear-gradient(180deg,#071025 0%, #071220 60%);color:#e6eef6;}
+a{color:var(--accent);}
+
+.site-header{
+  padding:28px 24px;
+  display:flex;flex-direction:column;gap:6px;align-items:flex-start;
+}
+.site-header h1{margin:0;font-size:28px;letter-spacing:0.4px;}
+.tagline{margin:0;color:var(--muted);font-size:13px;}
+
+.container{
+  display:flex;
+  gap:20px;
+  padding:18px;
+  max-width:1200px;margin:18px auto;
+}
+
+/* Controls panel */
+.controls{
+  width:320px;
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 6px 20px rgba(2,6,23,0.6);
+  display:flex;flex-direction:column;gap:12px;
+}
+.control-row{display:flex;align-items:center;gap:10px;}
+.control-row label{font-size:13px;color:var(--muted);min-width:130px;}
+.control-row input[type="number"], .control-row select, .control-row input[type="range"]{
+  flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;
+}
+.control-row.buttons{justify-content:space-between;margin-top:6px;}
+.control-row.buttons button{
+  background:linear-gradient(180deg,var(--accent),#0ea5e9);
+  border:none;color:#04202a;padding:10px 14px;border-radius:10px;font-weight:600;cursor:pointer;box-shadow:0 6px 14px rgba(13,110,169,0.12);
+}
+.control-row.buttons button.secondary{
+  background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);
+}
+.ai-controls{opacity:0.9;}
+.timers{display:flex;gap:12px;color:var(--muted);font-size:13px;padding-top:6px;}
+
+/* Board area and sidebar */
+.board-area{
+  flex:1;
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+}
+.board{
+  width:520px; /* chessboardjs default 400-520 good */
+  border-radius:10px;
+  padding:10px;
+  background:var(--glass);
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* chessboardjs elements will be inside .board */
+.board .square-55d63 { box-shadow: none; }
+
+/* Sidebar */
+.sidebar{
+  width:320px;background:var(--panel);border-radius:var(--radius);padding:12px;display:flex;flex-direction:column;gap:12px;
+}
+.status{font-size:14px;color:var(--muted);}
+.moves{max-height:220px;overflow:auto;background:rgba(0,0,0,0.02);padding:8px;border-radius:8px;}
+.moves h3, .pgn h3{margin:0 0 8px 0;font-size:13px;color:var(--muted);}
+#moveList{margin:0;padding-left:18px;color:#dff3ff;}
+#pgn{width:100%;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit;padding:8px;resize:vertical}
+
+/* Footer */
+.site-footer{max-width:1200px;margin:12px auto;padding:12px;color:var(--muted);font-size:13px;text-align:center;}
+
+/* Responsive */
+@media (max-width:980px){
+  .container{flex-direction:column;padding:12px;}
+  .board{width:100%;}
+  .board-area{flex-direction:column;align-items:center;}
+  .controls, .sidebar{width:100%;}
+}
+
+/* Small helpers for chessboard appearance */
+.white-1e1d7 { background: #f0d9b5; }
+.black-3c85d { background: #b58863; }
+
+/* Highlight last move squares */
+.highlight { box-shadow: inset 0 0 0 3px rgba(30,200,150,0.12); }
+
+/* Move log number styling */
+#moveList li{padding:6px 0;border-bottom:1px dashed rgba(255,255,255,0.02);font-size:14px;}
