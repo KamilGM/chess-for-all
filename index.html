@@ -1,1 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chess For All</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chessboard.js CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/chessboardjs@1.0.0/www/css/chessboard-1.0.0.min.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Chess For All</h1>
+    <p class="tagline">Play local 2-player or vs AI (levels 1–10). Customize time, sides, and randomness.</p>
+  </header>
 
+  <main class="container">
+    <section class="controls">
+      <div class="control-row">
+        <label>Mode:</label>
+        <select id="mode">
+          <option value="hotseat">2 Players (hotseat)</option>
+          <option value="ai">Play vs Computer</option>
+        </select>
+      </div>
+
+      <div class="control-row ai-controls">
+        <label for="level">AI Level: <span id="levelVal">5</span></label>
+        <input id="level" type="range" min="1" max="10" value="5">
+      </div>
+
+      <div class="control-row ai-controls">
+        <label>Choose side:</label>
+        <label><input type="radio" name="side" value="random" checked> Random</label>
+        <label><input type="radio" name="side" value="white"> White</label>
+        <label><input type="radio" name="side" value="black"> Black</label>
+      </div>
+
+      <div class="control-row">
+        <label for="time">Minutes per side (0 = unlimited):</label>
+        <input id="time" type="number" min="0" value="0">
+      </div>
+
+      <div class="control-row">
+        <label><input id="randomize" type="checkbox"> Randomize starting position (Fischer Random)</label>
+      </div>
+
+      <div class="control-row buttons">
+        <button id="startBtn">Start Game</button>
+        <button id="undoBtn">Undo</button>
+        <button id="resetBtn">Reset</button>
+      </div>
+
+      <div class="timers">
+        <div><strong>White:</strong> <span id="whiteTimer">--:--</span></div>
+        <div><strong>Black:</strong> <span id="blackTimer">--:--</span></div>
+      </div>
+
+    </section>
+
+    <section class="board-area">
+      <div id="board" class="board"></div>
+      <aside class="sidebar">
+        <div class="status">Status: <span id="status">Idle</span></div>
+        <div class="moves">
+          <h3>Move Log</h3>
+          <ol id="moveList"></ol>
+        </div>
+        <div class="pgn">
+          <h3>PGN</h3>
+          <textarea id="pgn" readonly rows="6"></textarea>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Created with ❤️ — configurable AI levels, timers, and randomization.</small>
+  </footer>
+
+  <!-- Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js"></script>
+  <script src="https://unpkg.com/chessboardjs@1.0.0/www/js/chessboard-1.0.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
